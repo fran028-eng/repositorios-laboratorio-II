@@ -1,0 +1,17 @@
+repositorios practica 1
+sudo apt upgrade -y
+   ~sudo apt upgrade -y
+   sudo apt upgrade -y
+   grep ^deb /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null
+   apt-cache search bashtop
+   sudo apt install bashtop -y
+   cd /tmp
+   wget https://github.com/aristocratos/bashtop/archive/refs/heads/master.zip
+   unzip master.zip
+   cd bashtop-master
+   sudo make install
+   bashtop
+   cd /tmp/bashtop-master
+   sudo make uninstall
+   apt autoremove -y
+   history

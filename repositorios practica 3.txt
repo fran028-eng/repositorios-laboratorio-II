@@ -1,0 +1,43 @@
+repositorios practica 3
+lsblk
+   clear
+   fdisk/dev/sdb
+   fdisk /dev/sdb
+   lsblk
+   ls
+   mkdir /Desktop/disco_ext
+   cd Desktop
+   ls
+   mkdir disco_ext
+   cd ..
+   mount /dev/sdb1 /Desktop/disco_ext
+   ls
+   cd Desktop
+   ls
+   cd ..
+   mount /dev/sdb1 /Desktop/disco_ext
+   mkdir -p ~/Desktop/disco_ext
+   mount /dev/sdb1 ~/Desktop/disco_ext
+   sudo mkfs.ext4 /dev/sdb1
+   mkdir -p /root/Desktop/disco_ext
+   mkdir -p /home/francisco/Desktop/disco_ext
+   mount /dev/sdb1 /home/francisco/Desktop/disco_ext
+   clear
+   df -h
+   mount /dev/sdb1 /home/francisco/Desktop/disco_ext
+   touch AdrianAlcantara.txt
+   ls
+   ls -l
+   pwd
+   ls
+   cd ..
+   mount /dev/sdb1 /mnt
+   cd /mnt
+   ls
+   clear
+   lsblk
+   df -h
+   sudo mount | grep sdb1
+   history
+
+

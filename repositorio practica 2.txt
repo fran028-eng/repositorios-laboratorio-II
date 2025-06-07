@@ -1,0 +1,12 @@
+repositorio practica 2
+crontab -e
+   clear
+   crontab -e   # at 5 a.m every week with: # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/   #
+   systemctl start atd
+   systemctl enable atd
+   ls -l /tmp
+   echo "rm -rf /tmp/*" | at now + 1 minute
+   ls -l /tmp
+   clear
+   history
+
