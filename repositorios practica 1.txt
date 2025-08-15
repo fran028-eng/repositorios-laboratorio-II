@@ -1,17 +1,31 @@
 repositorios practica 1
-sudo apt upgrade -y
-   ~sudo apt upgrade -y
-   sudo apt upgrade -y
-   grep ^deb /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null
-   apt-cache search bashtop
-   sudo apt install bashtop -y
-   cd /tmp
-   wget https://github.com/aristocratos/bashtop/archive/refs/heads/master.zip
-   unzip master.zip
-   cd bashtop-master
-   sudo make install
-   bashtop
-   cd /tmp/bashtop-master
-   sudo make uninstall
-   apt autoremove -y
-   history
+
+
+# 1. Actualizar repositorios y sistema
+sudo apt update && sudo apt upgrade -y
+
+# 2. Ver repositorios en uso
+grep ^deb /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null
+
+# 3. Buscar si bashtop está en repositorios
+apt search bashtop
+
+# 4. Instalar bashtop desde repositorios si está disponible
+sudo apt install bashtop -y || echo "Bashtop no está en repositorios, instalando manualmente..."
+
+# 5. Si no está en repositorios, instalar manualmente
+sudo apt install wget unzip make -y
+cd /tmp
+wget https://github.com/aristocratos/bashtop/archive/refs/heads/master.zip
+unzip master.zip
+cd bashtop-master
+sudo make install
+
+# 6. Probar la herramienta
+bashtop
+
+# 7. Desinstalar la herramienta (manual o repos)
+sudo apt purge bashtop -y 2>/dev/null || sudo make uninstall
+
+# 8. Limpiar dependencias no usadas
+sudo apt autoremove -y
