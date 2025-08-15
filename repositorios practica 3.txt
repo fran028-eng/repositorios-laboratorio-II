@@ -1,43 +1,51 @@
 repositorios practica 3
+
+
+
+
+
+# 1. Listar discos actuales y particiones
 lsblk
-   clear
-   fdisk/dev/sdb
-   fdisk /dev/sdb
-   lsblk
-   ls
-   mkdir /Desktop/disco_ext
-   cd Desktop
-   ls
-   mkdir disco_ext
-   cd ..
-   mount /dev/sdb1 /Desktop/disco_ext
-   ls
-   cd Desktop
-   ls
-   cd ..
-   mount /dev/sdb1 /Desktop/disco_ext
-   mkdir -p ~/Desktop/disco_ext
-   mount /dev/sdb1 ~/Desktop/disco_ext
-   sudo mkfs.ext4 /dev/sdb1
-   mkdir -p /root/Desktop/disco_ext
-   mkdir -p /home/francisco/Desktop/disco_ext
-   mount /dev/sdb1 /home/francisco/Desktop/disco_ext
-   clear
-   df -h
-   mount /dev/sdb1 /home/francisco/Desktop/disco_ext
-   touch AdrianAlcantara.txt
-   ls
-   ls -l
-   pwd
-   ls
-   cd ..
-   mount /dev/sdb1 /mnt
-   cd /mnt
-   ls
-   clear
-   lsblk
-   df -h
-   sudo mount | grep sdb1
-   history
 
+# 2. Identificar el nuevo disco (ejemplo: /dev/sdb)
+sudo fdisk /dev/sdb
+# - Comandos dentro de fdisk:
+#   n (crear nueva partición)
+#   p (partición primaria)
+#   1 (número de partición)
+#   Enter (inicio predeterminado)
+#   Enter (fin predeterminado)
+#   w (escribir cambios y salir)
 
+# 3. Formatear la partición recién creada como ext4
+sudo mkfs.ext4 /dev/sdb1
+
+# 4. Crear directorio de montaje en el escritorio
+mkdir -p ~/Desktop/disco_ext
+
+# 5. Montar la partición
+sudo mount /dev/sdb1 ~/Desktop/disco_ext
+
+# 6. Verificar que se montó correctamente
+df -h
+sudo mount | grep sdb1
+
+# 7. Entrar al directorio montado y crear archivo
+cd ~/Desktop/disco_ext
+touch AdrianAlcantara.txt
+ls -l
+pwd
+
+# 8. Desmontar y volver a montar en /mnt
+cd ~
+sudo umount ~/Desktop/disco_ext
+sudo mount /dev/sdb1 /mnt
+
+# 9. Verificar contenido
+cd /mnt
+ls -l
+
+# 10. Validar estado final de discos y particiones
+lsblk
+df -h
+sudo mount | grep sdb1
