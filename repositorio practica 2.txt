@@ -1,12 +1,33 @@
 repositorio practica 2
-crontab -e
-   clear
-   crontab -e   # at 5 a.m every week with: # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/   #
-   systemctl start atd
-   systemctl enable atd
-   ls -l /tmp
-   echo "rm -rf /tmp/*" | at now + 1 minute
-   ls -l /tmp
-   clear
-   history
 
+
+# 1. Abrir crontab para editar tareas programadas del usuario
+crontab -e
+
+# 2. Agregar cron jobs (ejemplo):
+# Actualizar sistema todos los días a las 23:00
+0 23 * * * sudo apt update && sudo apt upgrade -y
+
+# Reiniciar la máquina todos los domingos a las 3:00 a.m.
+0 3 * * 0 sudo /sbin/shutdown -r now
+
+# Guardar y cerrar crontab
+
+# 3. Iniciar y habilitar el servicio 'atd' para programar tareas puntuales
+sudo systemctl start atd
+sudo systemctl enable atd
+
+# 4. Verificar el contenido de /tmp antes de la tarea
+ls -l /tmp
+
+# 5. Crear tarea puntual con 'at' para eliminar todo el contenido de /tmp dentro de 1 minuto
+echo "rm -rf /tmp/*" | at now + 1 minute
+
+# 6. Verificar que la tarea se ha programado
+atq
+
+# 7. Esperar 1-2 minutos y luego comprobar que se ejecutó
+ls -l /tmp
+
+# 8. Limpiar historial visual si se desea
+clear
